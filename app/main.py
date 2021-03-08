@@ -85,7 +85,7 @@ def API():
             elif JSON.get('image', None) == "malaria":
                 if JSON.get('imageData', None) != None:
                     data_url = JSON['imageData'].split(",")[1]
-                    img_bytes = base64.b64decode(data_url)
+                    img_bytes = base64.b64decode(data_url, ' /')
                     img = Image.open(BytesIO(img_bytes))
                     img = img.resize((36, 36))
                     img = np.asarray(img)
@@ -102,14 +102,14 @@ def API():
                     output_data = interpreter_malaria.get_tensor(output_details[0]['index'])
                     pred = np.argmax(output_data[0])
 
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
                 else:
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
             elif JSON.get('image', None) == "pneumonia":
                 if JSON.get('imageData', None) != None:
                     data_url = JSON['imageData'].split(",")[1]
-                    img_bytes = base64.b64decode(data_url)
+                    img_bytes = base64.b64decode(data_url, ' /')
                     img = Image.open(BytesIO(img_bytes))
                     img = img.resize((36, 36))
                     img = np.asarray(img)
@@ -123,7 +123,7 @@ def API():
                     output_data = interpreter_pneumonia.get_tensor(output_details[0]['index'])
                     pred = np.argmax(output_data[0])
 
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
                 else:
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
@@ -134,7 +134,7 @@ def API():
                 if pred == -1:
                     return {'output': 'Error', 'msg': 'Wrong Data or Insufficient Dara'}, 200
                 else:
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
             else:
                 return {'output': 'Error', 'msg': 'No Data or Wrong Data'}
         except Exception as ex:
@@ -149,7 +149,7 @@ def API():
             elif JSON.get('image', None) == "malaria":
                 if JSON.get('imageData', None) != None:
                     data_url = JSON['imageData'].split(",")[1]
-                    img_bytes = base64.b64decode(data_url)
+                    img_bytes = base64.b64decode(data_url, ' /')
                     img = Image.open(BytesIO(img_bytes))
                     img = img.resize((36, 36))
                     img = np.asarray(img)
@@ -166,14 +166,14 @@ def API():
                     output_data = interpreter_malaria.get_tensor(output_details[0]['index'])
                     pred = np.argmax(output_data[0])
 
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
                 else:
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
             elif JSON.get('image', None) == "pneumonia":
                 if JSON.get('imageData', None) != None:
                     data_url = JSON['imageData'].split(",")[1]
-                    img_bytes = base64.b64decode(data_url)
+                    img_bytes = base64.b64decode(data_url, ' /')
                     img = Image.open(BytesIO(img_bytes))
                     img = img.resize((36, 36))
                     img = np.asarray(img)
@@ -187,7 +187,7 @@ def API():
                     output_data = interpreter_pneumonia.get_tensor(output_details[0]['index'])
                     pred = np.argmax(output_data[0])
 
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
                 else:
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
@@ -200,7 +200,7 @@ def API():
                 if pred == -1:
                     return {'output': 'Error', 'msg': 'Wrong Data or Insufficient Dara'}, 200
                 else:
-                    return {'output': 'Sucess', 'msg': pred}, 200
+                    return {'output': 'Sucess', 'msg': str(pred)}, 200
             else:
                 return {'output': 'Error', 'msg': 'No Data or Wrong Data'}
         except Exception as ex:
