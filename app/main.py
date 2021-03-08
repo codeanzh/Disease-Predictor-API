@@ -128,7 +128,7 @@ def API():
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
             elif JSON.get('data', None) != None:
-                to_predict_list = list(map(float, list(JSON.get('data'))))
+                to_predict_list = list(map(float, list(JSON.get('data').values())))
                 pred = predict(to_predict_list)
                 
                 if pred == -1:
@@ -192,7 +192,7 @@ def API():
                     print('No Image Found')
                     return {'output': 'Error', 'msg': 'No Image Data Found'}, 200
             elif JSON.get('data', None) != None:
-                to_predict_list = list(map(float, list(JSON.get('data'))))
+                to_predict_list = list(map(float, list(JSON.get('data').values())))
 
                 #get prediction
                 pred = predict(to_predict_list)
